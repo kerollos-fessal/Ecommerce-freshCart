@@ -1,0 +1,33 @@
+.product {
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .product:hover {
+    box-shadow: 1px 1px 10px #4fa74f;
+  }
+  
+  .custom-color {
+    color: #4fa74f;
+  }
+  
+  .custom-btn {
+    top: 50%;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .custom-btn {
+    height: fit-content;
+    transition: all 0.4s;
+    cursor: pointer;
+    z-index: 90;
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  
+  .product:hover .custom-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
