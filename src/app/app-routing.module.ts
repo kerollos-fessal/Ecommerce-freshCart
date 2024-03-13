@@ -30,16 +30,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: AllOrdersComponent,
   },
-  {
-    path: 'localhost:4200/allorders',
-    canActivate: [authGuard],
-    component: AllOrdersComponent,
-  },
-  {
-    path: 'http://localhost:4200/allorders',
-    canActivate: [authGuard],
-    component: AllOrdersComponent,
-  },
+  
   {
     path: 'wishlist',
     canActivate: [authGuard],
@@ -83,7 +74,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {useHash:true, scrollPositionRestoration: 'enabled' }),
   ],
   exports: [RouterModule],
 })
