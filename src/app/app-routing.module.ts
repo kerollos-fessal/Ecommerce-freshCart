@@ -31,6 +31,11 @@ const routes: Routes = [
     component: AllOrdersComponent,
   },
   {
+    path: 'localhost:4200/allorders',
+    canActivate: [authGuard],
+    component: AllOrdersComponent,
+  },
+  {
     path: 'wishlist',
     canActivate: [authGuard],
     component: WishlistComponent,
