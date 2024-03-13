@@ -1,0 +1,79 @@
+<div class="container my-5" *ngIf="allProducts.length > 0">
+  <h1
+    class="text-main fw-semibold border-bottom border-3 border-success text-center mb-5 pb-2"
+  >
+    Your Wishlist
+  </h1>
+  <input
+    type="text"
+    [(ngModel)]="searchKey"
+    placeholder="Search for products..."
+    class="w-75 shadow-sm form-control mx-auto mb-5 border-2"
+  />
+  <div class="row gy-3">
+    <div
+      class="col-md-4 col-sm-6 col-xl-3"
+      *ngFor="let product of allProducts | searchPipe : searchKey"
+    >
+      <div class="product px-2 py-3 rounded position-relative overflow-hidden">
+        <div (click)="toSingleProduct(product.id)">
+          <img
+            [src]="product.imageCover"
+            class="w-100"
+            alt="{{ product.title }}"
+          />
+          <div class="d-flex justify-content-between mt-2">
+            <p class="align-self-center mb-1 custom-color">
+              {{ product.category.name }}
+            </p>
+            <div>
+              <button
+                class="btn text-danger fw-medium"
+                (click)="
+                  deleteProductFromWishlist(product.id);
+                  $event.stopPropagation()
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+          </div>
+          <h6 class="fw-semibold">{{ product.title | firstTwoWords : 2 }}</h6>
+          <div class="d-flex justify-content-between">
+            <p>{{ product.price | currency : "EGP" }}</p>
+            <p>
+              <i class="fa fa-star" style="color: #fbbc04"></i
+              >{{ product.ratingsAverage }}
+            </p>
+          </div>
+        </div>
+        <button
+          class="btn btn-success d-block text-white custom-btn w-100 fw-semibold shadow-sm"
+          (click)="toggleCart(product.id)"
+          [ngClass]="{
+            'btn-danger': cartStatus[product.id],
+            'btn-success': !cartStatus[product.id]
+          }"
+        >
+          {{ cartStatus[product.id] ? "- Remove from Cart" : "+ Add to Cart" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5" *ngIf="allProducts.length == 0">
+  <h1
+    class="text-main fw-semibold border-bottom border-3 border-success text-center mb-5 pb-2"
+  >
+    Your Wishlist
+  </h1>
+  <div
+    class="alert alert-success text-main w-75 text-center fw-semibold mx-auto my-5"
+  >
+    No Products In your Wishlist till now
+  </div>
+  <a [routerLink]="['/home']" class="mb-5 fw-semibold text-main"
+    >Add some products?</a
+  >
+</div>

@@ -1,0 +1,24 @@
+<div class="container mb-5" *ngIf="categoryDetails">
+  <h1 class="text-main my-4">Category Details:</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <img [src]="categoryDetails.image" alt="category image" class="w-100" />
+    </div>
+    <div class="col-md-7 d-flex flex-column mt-5">
+      <h2
+        class="fw-semibold mb-5 text-center border-bottom border-2 py-2 border-success"
+      >
+        {{ categoryDetails.name }}
+      </h2>
+      <p class="fw-semibold fs-4">
+        Nothing to show.
+        <a
+          class="text-main"
+          [routerLink]="['/categories']"
+          routerLinkActive="router-link-active"
+          >Go back to Home?</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.btn-update{
+    border: 1px solid #0aad0a;
+}
+
+.btn-update:hover{
+    border: 1px solid white;
+    color: white;
+    background-color: #0aad0a;
+}

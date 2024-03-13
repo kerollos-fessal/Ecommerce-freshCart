@@ -1,0 +1,47 @@
+<div class="container my-5" *ngIf="productDetails">
+  <div class="row">
+    <div class="col-md-5">
+      <img
+        [src]="productDetails.imageCover"
+        alt="product image"
+        class="w-100"
+      />
+    </div>
+    <div class="col-md-7 d-flex flex-column mt-5">
+      <div class="d-flex justify-content-between mb-3 align-content-center">
+        <p class="fs-5 fw-semibold mb-0">{{ productDetails.title }}</p>
+        <i
+          class="fa fa-heart wishlist-icon cursor-pointer align-self-center fs-2 pe-lg-2 pe-sm-4 pe-5"
+          (click)="toggleWishlist(productDetails.id); $event.stopPropagation()"
+          [ngClass]="{
+            'text-main': wishlistStatus[productDetails.id],
+            'text-secondary border-secondary':
+              !wishlistStatus[productDetails.id]
+          }"
+        ></i>
+      </div>
+      <p class="text-muted mb-5">
+        {{ productDetails.description | lowercase }}
+      </p>
+      <div class="d-flex justify-content-between mb-5">
+        <p>{{ productDetails.price | currency : "EGP" }}</p>
+        <p>
+          <i class="fa fa-star" style="color: #fbbc04"></i
+          >{{ productDetails.ratingsAverage }}
+        </p>
+      </div>
+      <button
+        class="btn btn-success mx-auto w-100 d-block text-white custom-btn align-self-center fw-semibold shadow"
+        [ngClass]="{
+          'btn-danger': cartStatus[productDetails.id],
+          'btn-success': !cartStatus[productDetails.id]
+        }"
+        (click)="toggleCart(productDetails.id)"
+      >
+        {{
+          cartStatus[productDetails.id] ? "- Remove from Cart" : "+ Add to Cart"
+        }}
+      </button>
+    </div>
+  </div>
+</div>

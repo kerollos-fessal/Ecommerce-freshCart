@@ -1,0 +1,99 @@
+<div class="container my-5 py-5 shadow rounded-3">
+  <div class="w-75 mx-auto">
+    <h1>Order Now :</h1>
+    <form [formGroup]="shippingAddress" (ngSubmit)="handleOnlinePayment()">
+      <div class="form-group mb-3">
+        <label for="text">Details</label>
+        <input
+          formControlName="details"
+          type="text"
+          id="details"
+          class="form-control shadow-sm"
+        />
+        <div
+          class="alert alert-danger mt-2"
+          *ngIf="
+            shippingAddress.get('details')?.errors &&
+            shippingAddress.get('details')?.touched
+          "
+        >
+          <p
+            *ngIf="shippingAddress.get('details')?.getError('required')"
+            class="m-0"
+          >
+            Required
+          </p>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="phone">Phone</label>
+        <input
+          formControlName="phone"
+          type="tel"
+          id="phone"
+          class="form-control shadow-sm"
+        />
+        <div
+          class="alert alert-danger mt-2"
+          *ngIf="
+            shippingAddress.get('phone')?.errors &&
+            shippingAddress.get('phone')?.touched
+          "
+        >
+          <p
+            *ngIf="shippingAddress.get('phone')?.getError('required')"
+            class="m-0"
+          >
+            Required
+          </p>
+          <p
+            *ngIf="shippingAddress.get('phone')?.getError('pattern')"
+            class="m-0"
+          >
+            Invalid phone number
+          </p>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="text">city</label>
+        <input
+          formControlName="city"
+          type="text"
+          id="city"
+          class="form-control shadow-sm"
+        />
+        <div
+          class="alert alert-danger mt-2"
+          *ngIf="
+            shippingAddress.get('city')?.errors &&
+            shippingAddress.get('city')?.touched
+          "
+        >
+          <p
+            *ngIf="shippingAddress.get('city')?.getError('required')"
+            class="m-0"
+          >
+            Required
+          </p>
+        </div>
+      </div>
+      <button
+        class="btn d-block ms-auto shadow text-white"
+        [disabled]="shippingAddress.invalid"
+        [ngClass]="{
+          'btn-success': shippingAddress.valid,
+          'btn-danger': !shippingAddress.valid
+        }"
+      >
+        <i *ngIf="isLoading" class="fa fa-spinner fa-spin-pulse"></i>
+        <span *ngIf="!isLoading">Order Now</span>
+      </button>
+      <div
+        class="alert alert-danger mt-3 text-center w-75 mx-auto"
+        *ngIf="apiError"
+      >
+        {{ apiError }}!
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+.overlay {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #f0f3f2e8;
+}
+
+.fa {
+  position: absolute;
+  top: 50%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+}
+.faT {
+  position: absolute;
+  top: 51%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+}
+.loader {
+  height: 60px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#0aad0a 0 0);
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 33.4% 33.4%;
+  animation: l7 0.8s infinite linear;
+}
+@keyframes l7 {
+  0%,
+  5% {
+    background-position: 0 0, 50% 0, 0 50%, 50% 50%;
+  }
+  25% {
+    background-position: 0 0, 100% 0, 0 100%, 50% 50%;
+  }
+  50% {
+    background-position: 50% 0, 100% 0, 0 100%, 0 50%;
+  }
+  75% {
+    background-position: 50% 0, 100% 50%, 0 100%, 0 0;
+  }
+  95%,
+  100% {
+    background-position: 50% 0, 50% 50%, 0 50%, 0 0;
+  }
+}
+
+.cart {
+  width: 90px;
+  height: 14px;
+  position: relative;
+  clip-path: inset(-40px 0 -5px);
+}
+.cart:before {
+  content: "";
+  position: absolute;
+  inset: auto calc(50% - 17px) 0;
+  height: 50px;
+  --g: no-repeat linear-gradient(#0aad0a 0 0);
+  background: var(--g), var(--g), var(--g), var(--g);
+  background-size: 16px 14px;
+  animation: l7-1 2s infinite linear, l7-2 2s infinite linear;
+}
+@keyframes l7-1 {
+  0%,
+  100% {
+    background-position: 0 -50px, 100% -50px;
+  }
+  17.5% {
+    background-position: 0 100%, 100% -50px, 0 -50px, 100% -50px;
+  }
+  35% {
+    background-position: 0 100%, 100% 100%, 0 -50px, 100% -50px;
+  }
+  52.5% {
+    background-position: 0 100%, 100% 100%, 0 calc(100% - 16px), 100% -50px;
+  }
+  70%,
+  98% {
+    background-position: 0 100%, 100% 100%, 0 calc(100% - 16px),
+      100% calc(100% - 16px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .faT {
+    left: 70% !important;
+  }
+}

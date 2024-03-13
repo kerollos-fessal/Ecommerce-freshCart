@@ -1,0 +1,29 @@
+<div class="container mb-5">
+  <h1 class="text-main fw-semibold nav-underline mb-5 mt-4">Our Categories</h1>
+  <input
+    type="text"
+    [(ngModel)]="searchKey"
+    placeholder="Search for categories..."
+    class="w-75 shadow-sm form-control mx-auto mb-5 border-2"
+  />
+  <div class="row gy-3">
+    <div
+      class="col-lg-3 col-sm-6"
+      *ngFor="let category of allCategories | categorySearch : searchKey"
+    >
+      <div class="product px-2 py-3 rounded overflow-hidden">
+        <div (click)="toSingleCategory(category._id)">
+          <img
+            [src]="category.image"
+            class="w-100"
+            height="300"
+            alt="{{ category.name }}"
+          />
+          <h3 class="fw-semibold text-center border-bottom border-2 py-1 mb-0">
+            {{ category.name }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
