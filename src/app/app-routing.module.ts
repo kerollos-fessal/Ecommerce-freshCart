@@ -31,7 +31,7 @@ const routes: Routes = [
     component: AllOrdersComponent,
   },
   {
-    path: 'localhost:4200/allorders',
+    path: 'http://localhost:4200/allorders',
     canActivate: [authGuard],
     component: AllOrdersComponent,
   },
@@ -78,7 +78,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
   ],
   exports: [RouterModule],
 })
