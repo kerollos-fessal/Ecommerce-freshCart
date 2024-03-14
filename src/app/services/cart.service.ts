@@ -46,9 +46,9 @@ export class CartService {
     );
   }
 
-  getUserOrders(cartId: string): Observable<any> {
+  getUserOrders(): Observable<any> {
     return this._http.get(
-      `https://ecommerce.routemisr.com/api/v1/orders/user/${cartId}`
+      `https://ecommerce.routemisr.com/api/v1/orders`
     );
   }
 }

@@ -25,7 +25,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   getOrders() {
     this.subObject['getOrders'] = this._cartService
-      .getUserOrders(this.cartId)
+      .getUserOrders()
       .subscribe({
         next: (data) => {
           console.log(data);
