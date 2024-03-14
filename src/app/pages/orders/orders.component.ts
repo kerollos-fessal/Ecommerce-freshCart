@@ -28,6 +28,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
       .getUserOrders(this.cartId)
       .subscribe({
         next: (data) => {
+          console.log(data);
+          
         },
         error: (err) => {
         },

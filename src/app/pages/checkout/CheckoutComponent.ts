@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -25,7 +25,8 @@ export class CheckoutComponent implements OnDestroy {
 
   constructor(
     private _cartService: CartService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router:Router
   ) {
     this._activatedRoute.paramMap.subscribe((res: any) => {
       this.cartId = res.params.cartId;
@@ -42,7 +43,9 @@ export class CheckoutComponent implements OnDestroy {
           next: (data) => {
             this.isLoading = false;
             if (data.status == 'success') {
-              window.location.href = data.session.url;
+              // window.location.href = data.session.url;
+              //if you restored this line dont forget to remove cartid from  url in app routing module
+              this._router.navigate(['/allorders', this.cartId]);
             }
           },
           error: (errorMessage) => {
