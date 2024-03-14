@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnDestroy {
             if (data.status == 'success') {
               // window.location.href = data.session.url;
               //if you restored this line dont forget to remove cartid from  url in app routing module
-              this._router.navigate(['/allorders', this.cartId]);
+              this._router.navigate(['/allorders']);
             }
           },
           error: (errorMessage) => {

@@ -28,7 +28,7 @@ export class AllOrdersComponent implements OnInit, OnDestroy{
       .getUserOrders()
       .subscribe({
         next: (data) => {
-          console.log(data);
+          // console.log(data);
           
         },
         error: (err) => {

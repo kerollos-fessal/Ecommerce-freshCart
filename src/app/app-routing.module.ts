@@ -26,7 +26,7 @@ const routes: Routes = [
     component: CheckoutComponent,
   },
   {
-    path: 'allorders/:cartId',
+    path: 'allorders',
     canActivate: [authGuard],
     component: AllOrdersComponent,
   },
